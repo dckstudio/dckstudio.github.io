@@ -3,85 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DCK STUDIO</title>
+    <title>DCK STUDIO | Narrative & Contemporary Arts</title>
     <style>
-        /* DESIGN DCK STUDIO */
-        body, html {
-            margin: 0;
-            padding: 0;
-            background-color: #000; /* Noir profond */
-            color: #fff;
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            letter-spacing: 1px;
-        }
+        :root { --bg: #000000; --text: #ffffff; --dim: #555; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 200; -webkit-font-smoothing: antialiased; }
+        
+        /* Header Minimaliste */
+        header { padding: 60px 40px; display: flex; justify-content: space-between; align-items: baseline; }
+        .logo { font-weight: 900; letter-spacing: 0.6em; font-size: 0.8rem; text-transform: uppercase; }
+        .nav-link { color: var(--text); text-decoration: none; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; border-bottom: 1px solid #222; padding-bottom: 4px; transition: 0.3s; }
+        .nav-link:hover { border-bottom-color: #fff; }
 
-        header {
-            padding: 60px 50px 40px 50px;
-        }
+        /* Hero artistique */
+        .hero { padding: 40px; margin-bottom: 80px; }
+        h1 { font-size: clamp(3rem, 12vw, 8rem); font-weight: 100; text-transform: uppercase; line-height: 0.85; margin: 0; letter-spacing: -0.04em; }
+        .hero-desc { max-width: 550px; margin-top: 40px; font-size: 1.1rem; line-height: 1.7; color: #888; font-weight: 300; }
 
-        h1 {
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin: 0;
-            text-transform: uppercase;
+        /* Grille de projets */
+        .work-grid { padding: 0 40px 100px 40px; max-width: 1400px; margin: 0 auto; }
+        .work-item { margin-bottom: 120px; }
+        
+        .video-wrapper { 
+            position: relative; 
+            padding-bottom: 56.25%; 
+            height: 0; 
+            background: #080808; 
+            margin-bottom: 25px; 
+            border: 1px solid #111;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
         }
+        .video-wrapper:hover { transform: translateY(-5px); border-color: #333; }
+        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        
+        /* Infos projet */
+        .work-meta { display: flex; justify-content: space-between; align-items: flex-start; border-top: 1px solid #111; padding-top: 25px; }
+        .work-title { font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 0; font-weight: 300; }
+        .work-tags { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--dim); text-align: right; line-height: 2; }
+        .work-tags b { color: #aaa; font-weight: 400; }
 
-        .subtitle {
-            font-size: 0.85rem;
-            color: #666;
-            margin-top: 10px;
-        }
-
-        /* CONTENU PRINCIPAL */
-        .content {
-            padding: 0 50px;
-            display: flex;
-            justify-content: flex-start;
-        }
-
-        .video-container {
-            width: 100%;
-            max-width: 1200px;
-            aspect-ratio: 16 / 9;
-            background: #000;
-            position: relative;
-        }
-
-        iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        footer {
-            padding: 80px 50px 40px 50px;
-            font-size: 0.7rem;
-            color: #333;
+        footer { padding: 60px 40px; border-top: 1px solid #111; font-size: 0.6rem; letter-spacing: 0.3em; color: #333; text-transform: uppercase; display: flex; justify-content: space-between; }
+        
+        @media (max-width: 768px) {
+            header, .hero, .work-grid { padding: 20px; }
+            .work-meta { flex-direction: column; gap: 15px; }
+            .work-tags { text-align: left; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>DCK STUDIO</h1>
-        <div class="subtitle">BEYOND THE FRAME — Documentary film editor & photographer</div>
+        <div class="logo">DCK STUDIO</div>
+        <a href="mailto:dckstudio@gmail.com" class="nav-link">Contact / Inquire</a>
     </header>
 
-    <div class="content">
-        <div class="video-container">
-            <iframe 
-                src="https://www.youtube-nocookie.com/embed/-XtdCsE3ILA?rel=0&modestbranding=1&iv_load_policy=3&color=white&controls=1&playlist=-XtdCsE3ILA" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
+    <section class="hero">
+        <h1>BEYOND<br>THE FRAME</h1>
+        <p class="hero-desc">Independent Creative Lab. Exploration de la forme, du rythme et de la narration brute. Focus sur le documentaire social et l'expérimentation cinématographique.</p>
+    </section>
+
+    <main class="work-grid">
+        <div class="work-item">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/Sd7LssOCWSA?modestbranding=1&color=white&rel=0" allowfullscreen title="Showreel"></iframe>
+            </div>
+            <div class="work-meta">
+                <h3 class="work-title">Visual Research / 01</h3>
+                <div class="work-tags">
+                    Role: <b>Creative Direction / Editing</b><br>
+                    Theme: <b>Contemporary Social Arts</b><br>
+                    Context: <b>Experimental Lab</b>
+                </div>
+            </div>
         </div>
-    </div>
+    </main>
 
     <footer>
-        © 2026 DCK STUDIO | ISTANBUL — PARIS
+        <span>© 2026 DCK STUDIO / ISTANBUL</span>
+        <span>Narrative Lead & Visual Arts</span>
     </footer>
 
 </body>
