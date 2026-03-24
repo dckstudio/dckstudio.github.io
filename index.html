@@ -3,51 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DCK STUDIO | Film</title>
-    
+    <title>DCK STUDIO</title>
     <style>
-        /* Design Minimaliste Noir */
+        /* Reset & Fond Studio */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
-            background-color: #000; /* Fond noir profond */
-            overflow: hidden; /* Évite le scroll si une seule vidéo */
+            background-color: #000; /* Noir pur */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Wrapper Player DCK */
+        .dck-player-container {
+            width: 100%;
+            max-width: 100vw;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-
-        /* Container du Player Responsive 16:9 */
-        .video-wrapper {
-            position: relative;
-            width: 90%;
-            max-width: 1280px;
-            aspect-ratio: 16 / 9;
             background: #000;
         }
 
-        .video-wrapper iframe {
+        .video-aspect-ratio {
+            position: relative;
+            width: 90%; /* Marges sur les côtés pour le style */
+            max-width: 1400px;
+            aspect-ratio: 16 / 9;
+        }
+
+        iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             border: none;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
         }
     </style>
 </head>
 <body>
 
-    <div class="video-wrapper">
-        <iframe 
-            src="https://www.youtube-nocookie.com/embed/-XtdCsE3ILA?rel=0&modestbranding=1&iv_load_policy=3&color=white&controls=1&playlist=-XtdCsE3ILA" 
-            title="DCK STUDIO - VIDEO"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
+    <div class="dck-player-container">
+        <div class="video-aspect-ratio">
+            <iframe 
+                src="https://www.youtube-nocookie.com/embed/-XtdCsE3ILA?rel=0&modestbranding=1&iv_load_policy=3&color=white&controls=1&playlist=-XtdCsE3ILA" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
     </div>
 
 </body>
