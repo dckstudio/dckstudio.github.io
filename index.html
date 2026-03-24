@@ -5,36 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DCK STUDIO</title>
     <style>
-        /* Reset & Fond Studio */
+        /* DESIGN DCK STUDIO */
         body, html {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000; /* Noir pur */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
+            background-color: #000; /* Noir profond */
+            color: #fff;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            letter-spacing: 1px;
         }
 
-        /* Wrapper Player DCK */
-        .dck-player-container {
-            width: 100%;
-            max-width: 100vw;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #000;
+        header {
+            padding: 60px 50px 40px 50px;
         }
 
-        .video-aspect-ratio {
-            position: relative;
-            width: 90%; /* Marges sur les côtés pour le style */
-            max-width: 1400px;
+        h1 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* CONTENU PRINCIPAL */
+        .content {
+            padding: 0 50px;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 1200px;
             aspect-ratio: 16 / 9;
+            background: #000;
+            position: relative;
         }
 
         iframe {
@@ -43,15 +53,25 @@
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+            border: 0;
+        }
+
+        footer {
+            padding: 80px 50px 40px 50px;
+            font-size: 0.7rem;
+            color: #333;
         }
     </style>
 </head>
 <body>
 
-    <div class="dck-player-container">
-        <div class="video-aspect-ratio">
+    <header>
+        <h1>DCK STUDIO</h1>
+        <div class="subtitle">BEYOND THE FRAME — Documentary film editor & photographer</div>
+    </header>
+
+    <div class="content">
+        <div class="video-container">
             <iframe 
                 src="https://www.youtube-nocookie.com/embed/-XtdCsE3ILA?rel=0&modestbranding=1&iv_load_policy=3&color=white&controls=1&playlist=-XtdCsE3ILA" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -59,6 +79,10 @@
             </iframe>
         </div>
     </div>
+
+    <footer>
+        © 2026 DCK STUDIO | ISTANBUL — PARIS
+    </footer>
 
 </body>
 </html>
