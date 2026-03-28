@@ -191,14 +191,15 @@
                 <div class="photo-item p-2">
                     <img src="assets/picture02.png" alt="Photo 02">
                 </div>
+                <!-- Sécurité ajoutée : tente de charger .jpg si le .jpeg échoue -->
                 <div class="photo-item p-3">
-                    <img src="assets/picture03.jpeg" alt="Photo 03">
+                    <img src="assets/picture03.jpeg" alt="Photo 03" onerror="if (this.src.endsWith('.jpeg')) this.src='assets/picture03.jpg';">
                 </div>
                 <div class="photo-item p-4">
-                    <img src="assets/picture04.jpeg" alt="Photo 04">
+                    <img src="assets/picture04.jpeg" alt="Photo 04" onerror="if (this.src.endsWith('.jpeg')) this.src='assets/picture04.jpg';">
                 </div>
                 <div class="photo-item p-5">
-                    <img src="assets/picture05.jpeg" alt="Photo 05">
+                    <img src="assets/picture05.jpeg" alt="Photo 05" onerror="if (this.src.endsWith('.jpeg')) this.src='assets/picture04.jpg';">
                 </div>
             </div>
             <div class="work-meta">
