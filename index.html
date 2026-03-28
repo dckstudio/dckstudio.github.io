@@ -33,12 +33,12 @@
         
         .logo-wrapper {
             display: flex;
-            align-items: flex-start;
+            align-items: center; 
             gap: 15px;
         }
 
         .logo-icon {
-            height: 48px;
+            height: 55px; 
             width: auto;
             display: block;
         }
@@ -99,7 +99,7 @@
         }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         
-        /* Photographie - NOIR ET BLANC BLOQUÉ (Locked BW) */
+        /* Photographie - NOIR ET BLANC BLOQUÉ */
         .photo-grid { 
             display: grid; 
             grid-template-columns: repeat(6, 1fr); 
@@ -115,10 +115,10 @@
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            filter: grayscale(100%); /* Noir et blanc permanent */
+            filter: grayscale(100%); 
             transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1); 
+            display: block;
         }
-        /* Zoom au survol conservé, mais filtre couleur retiré */
         .photo-item:hover img { 
             transform: scale(1.05); 
         }
@@ -151,19 +151,36 @@
         @media (max-width: 768px) {
             header, .hero, .work-grid { padding: 20px; }
             .logo-text { font-size: 1.8rem; }
-            .logo-icon { height: 35px; }
+            .logo-icon { height: 40px; }
             .work-meta { flex-direction: column; gap: 10px; }
             .work-tags { text-align: left; }
             .photo-grid { grid-template-columns: 1fr; }
             .p-1, .p-2, .p-3, .p-4, .p-5 { grid-column: span 1; aspect-ratio: 1/1; }
         }
     </style>
+    <script>
+        function handleImageError(img) {
+            const formats = ['.jpg', '.jpeg', '.png', '.webp'];
+            let currentSrc = img.src;
+            let currentExt = currentSrc.substring(currentSrc.lastIndexOf('.')).toLowerCase();
+            let baseName = currentSrc.substring(0, currentSrc.lastIndexOf('.'));
+            
+            let nextIndex = formats.indexOf(currentExt) + 1;
+            if (nextIndex < formats.length) {
+                img.src = baseName + formats[nextIndex];
+            } else {
+                img.style.display = 'none';
+                img.parentElement.style.background = '#050505';
+            }
+        }
+    </script>
 </head>
 <body>
 
     <header>
         <div class="logo-wrapper">
-            <img src="dckstudio_logo_W_png.png" alt="Logo" class="logo-icon">
+            <!-- Chemin mis à jour vers le dossier assets -->
+            <img src="assets/dckstudio_logo_W_png.png" alt="Logo" class="logo-icon">
             <div class="logo-text">DCK<br>STUDIO</div>
         </div>
         <a href="mailto:dckstudio@proton.me" class="nav-link">CONTACT_INQUIRY</a>
@@ -176,7 +193,6 @@
 
     <main class="work-grid">
         
-        <!-- VIDEO 01 -->
         <div class="work-item">
             <span class="section-label">[ 01_MOTION_A ]</span>
             <div class="video-wrapper">
@@ -188,7 +204,6 @@
             </div>
         </div>
 
-        <!-- VIDEO 02 -->
         <div class="work-item">
             <span class="section-label">[ 01_MOTION_B ]</span>
             <div class="video-wrapper">
@@ -200,24 +215,23 @@
             </div>
         </div>
 
-        <!-- Section Photographie -->
         <div class="work-item">
             <span class="section-label">[ 02_STILLS ]</span>
             <div class="photo-grid">
                 <div class="photo-item p-1">
-                    <img src="assets/picture01.png" alt="Photo 01">
+                    <img src="assets/picture01.png" alt="Photo 01" onerror="handleImageError(this)">
                 </div>
                 <div class="photo-item p-2">
-                    <img src="assets/picture02.png" alt="Photo 02">
+                    <img src="assets/picture02.png" alt="Photo 02" onerror="handleImageError(this)">
                 </div>
                 <div class="photo-item p-3">
-                    <img src="assets/picture03.jpeg" alt="Photo 03" onerror="if (this.src.endsWith('.jpeg')) this.src='assets/picture03.jpg';">
+                    <img src="assets/picture03.jpeg" alt="Photo 03" onerror="handleImageError(this)">
                 </div>
                 <div class="photo-item p-4">
-                    <img src="assets/picture04.jpeg" alt="Photo 04" onerror="if (this.src.endsWith('.jpeg')) this.src='assets/picture04.jpg';">
+                    <img src="assets/picture04.jpeg" alt="Photo 04" onerror="handleImageError(this)">
                 </div>
                 <div class="photo-item p-5">
-                    <img src="assets/picture05.jpeg" alt="Photo 05" onerror="if (this.src.endsWith('.jpeg')) this.src='assets/picture05.jpg';">
+                    <img src="assets/picture05.jpeg" alt="Photo 05" onerror="handleImageError(this)">
                 </div>
             </div>
             <div class="work-meta">
@@ -226,7 +240,6 @@
             </div>
         </div>
 
-        <!-- Section Son -->
         <div class="work-item">
             <span class="section-label">[ 03_SOUND ]</span>
             <div class="work-meta">
