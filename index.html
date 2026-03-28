@@ -31,7 +31,19 @@
             border-bottom: 1px solid #111;
         }
         
-        .logo { 
+        .logo-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+
+        .logo-text { 
             font-size: 2.5rem; 
             letter-spacing: -0.02em;
             line-height: 0.9;
@@ -87,7 +99,7 @@
         }
         .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
         
-        /* Photographie - Noir et Blanc Bloqué */
+        /* Photographie - NOIR ET BLANC BLOQUÉ (Locked BW) */
         .photo-grid { 
             display: grid; 
             grid-template-columns: repeat(6, 1fr); 
@@ -103,11 +115,10 @@
             width: 100%; 
             height: 100%; 
             object-fit: cover; 
-            /* Noir et blanc forcé à 100% */
-            filter: grayscale(100%) contrast(1.1); 
+            filter: grayscale(100%); /* Noir et blanc permanent */
             transition: transform 0.7s cubic-bezier(0.19, 1, 0.22, 1); 
         }
-        /* On garde uniquement l'effet de zoom au survol, pas de retour à la couleur */
+        /* Zoom au survol conservé, mais filtre couleur retiré */
         .photo-item:hover img { 
             transform: scale(1.05); 
         }
@@ -139,7 +150,8 @@
         
         @media (max-width: 768px) {
             header, .hero, .work-grid { padding: 20px; }
-            .logo { font-size: 1.8rem; }
+            .logo-text { font-size: 1.8rem; }
+            .logo-icon { height: 35px; }
             .work-meta { flex-direction: column; gap: 10px; }
             .work-tags { text-align: left; }
             .photo-grid { grid-template-columns: 1fr; }
@@ -150,7 +162,10 @@
 <body>
 
     <header>
-        <div class="logo">DCK<br>STUDIO</div>
+        <div class="logo-wrapper">
+            <img src="dckstudio_logo_W_png.png" alt="Logo" class="logo-icon">
+            <div class="logo-text">DCK<br>STUDIO</div>
+        </div>
         <a href="mailto:dckstudio@proton.me" class="nav-link">CONTACT_INQUIRY</a>
     </header>
 
@@ -185,7 +200,7 @@
             </div>
         </div>
 
-        <!-- Section Photographie Étendue (5 images) -->
+        <!-- Section Photographie -->
         <div class="work-item">
             <span class="section-label">[ 02_STILLS ]</span>
             <div class="photo-grid">
