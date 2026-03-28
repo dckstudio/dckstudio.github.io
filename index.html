@@ -8,7 +8,7 @@
         :root { 
             --bg: #000000; 
             --text: #ffffff; 
-            --dim: #444; 
+            --dim: #222; /* Plus sombre pour les séparateurs */
             --accent: #888;
         }
         
@@ -28,7 +28,7 @@
             display: flex; 
             justify-content: space-between; 
             align-items: flex-start;
-            border-bottom: 1px solid #111;
+            border-bottom: 1px solid #111; /* Séparateur très discret */
         }
         
         .logo-wrapper {
@@ -80,24 +80,32 @@
 
         /* Grille de projets */
         .work-grid { padding: 40px; }
-        .work-item { margin-bottom: 150px; }
+        .work-item { margin-bottom: 120px; }
         
         .section-label { 
             font-size: 0.7rem; 
             letter-spacing: 0.3em; 
-            color: var(--dim); 
+            color: #444; 
             margin-bottom: 20px; 
             display: block; 
         }
 
+        /* Suppression du gris ici */
         .video-wrapper { 
             position: relative; 
             padding-bottom: 56.25%; 
             height: 0; 
-            background: #111; 
+            background: #000; /* Fond noir pur */
             margin-bottom: 30px; 
         }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .video-wrapper iframe { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: none; 
+        }
         
         /* Photographie - NOIR ET BLANC BLOQUÉ */
         .photo-grid { 
@@ -108,7 +116,7 @@
         }
         .photo-item { 
             overflow: hidden; 
-            background: #111; 
+            background: #000; 
             position: relative;
         }
         .photo-item img { 
@@ -135,7 +143,7 @@
         audio { width: 100%; height: 40px; filter: invert(1); }
 
         /* Méta-données */
-        .work-meta { border-top: 4px solid #fff; padding-top: 20px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .work-meta { border-top: 3px solid #fff; padding-top: 20px; display: flex; justify-content: space-between; align-items: flex-start; }
         .work-title { font-size: 1.8rem; margin: 0; letter-spacing: -0.02em; }
         .work-tags { font-size: 0.7rem; color: var(--accent); text-align: right; font-weight: 400; text-transform: none; }
 
@@ -143,7 +151,7 @@
             padding: 40px; 
             border-top: 1px solid #111; 
             font-size: 0.7rem; 
-            color: var(--dim); 
+            color: #333; 
             display: flex; 
             justify-content: space-between;
         }
@@ -170,7 +178,7 @@
                 img.src = baseName + formats[nextIndex];
             } else {
                 img.style.display = 'none';
-                img.parentElement.style.background = '#050505';
+                img.parentElement.style.background = '#000';
             }
         }
     </script>
@@ -179,7 +187,6 @@
 
     <header>
         <div class="logo-wrapper">
-            <!-- Chemin mis à jour vers le dossier assets -->
             <img src="assets/dckstudio_logo_W_png.png" alt="Logo" class="logo-icon">
             <div class="logo-text">DCK<br>STUDIO</div>
         </div>
