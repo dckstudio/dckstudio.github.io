@@ -131,12 +131,10 @@
             transform: scale(1.05); 
         }
 
-        /* Layout Variation for 5 images */
-        .p-1 { grid-column: span 3; aspect-ratio: 4/3; }
-        .p-2 { grid-column: span 3; aspect-ratio: 4/3; }
-        .p-3 { grid-column: span 2; aspect-ratio: 1/1; }
-        .p-4 { grid-column: span 2; aspect-ratio: 1/1; }
-        .p-5 { grid-column: span 2; aspect-ratio: 1/1; }
+        /* Layout pour 8 images */
+.p-1, .p-2 { grid-column: span 3; aspect-ratio: 16/9; } /* Deux grandes horizontales */
+.p-3, .p-4, .p-5 { grid-column: span 2; aspect-ratio: 1/1; } /* Trois carrées */
+.p-6, .p-7, .p-8 { grid-column: span 2; aspect-ratio: 1/1; } /* Trois nouvelles carrées */
 
         /* Lecteur Audio */
         .audio-container { margin-top: 30px; }
@@ -165,6 +163,25 @@
             .photo-grid { grid-template-columns: 1fr; }
             .p-1, .p-2, .p-3, .p-4, .p-5 { grid-column: span 1; aspect-ratio: 1/1; }
         }
+.portrait-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    margin-bottom: 80px; 
+}
+
+.video-wrapper-portrait { 
+    position: relative; 
+    padding-bottom: 177.78%; /* Ratio 9:16 */
+    height: 0; 
+    background: #000; 
+}
+
+.video-wrapper-portrait iframe { 
+    position: absolute; 
+    top: 0; left: 0; width: 100%; height: 100%; 
+    border: none; 
+}
     </style>
     <script>
         function handleImageError(img) {
@@ -221,25 +238,68 @@
                 <div class="work-tags">Director - Original Music<br>Simulation 35mm / 2026</div>
             </div>
         </div>
+<div class="work-item">
+    <span class="section-label">[ 01_MOTION_PORTRAIT ]</span>
+    <div class="portrait-grid">
+        
+        <div class="video-wrapper-portrait">
+            <iframe 
+                src="https://player.vimeo.com/video/1182381695?background=1&muted=1&autoplay=1&loop=1&byline=0&title=0&portrait=0" 
+                allow="autoplay; fullscreen" 
+                allowfullscreen>
+            </iframe>
+        </div>
 
+        <div class="video-wrapper-portrait">
+            <div style="width:100%; height:100%; background:#111; display:flex; align-items:center; justify-content:center; color:#333; font-size:0.6rem;">[ PENDING_STUDY_02 ]</div>
+        </div>
+
+        <div class="video-wrapper-portrait">
+            <div style="width:100%; height:100%; background:#111; display:flex; align-items:center; justify-content:center; color:#333; font-size:0.6rem;">[ PENDING_STUDY_03 ]</div>
+        </div>
+
+    </div>
+    <div class="work-meta">
+        <h3 class="work-title">FASHION_VERTICAL_STUDIES</h3>
+        <div class="work-tags">Vertical Content / Color Grading<br>Experimental Fashion / 2026</div>
+    </div>
+
+
+    </div>
+    <div class="work-meta">
+        <h3 class="work-title">FASHION_VERTICAL_STUDIES</h3>
+        <div class="work-tags">Vertical Content / Color Grading<br>Experimental Fashion / 2026</div>
+    </div>
+</div>
         <div class="work-item">
             <span class="section-label">[ 02_STILLS ]</span>
             <div class="photo-grid">
-                <div class="photo-item p-1">
-                    <img src="assets/picture01.png" alt="Photo 01" onerror="handleImageError(this)">
-                </div>
-                <div class="photo-item p-2">
-                    <img src="assets/picture02.png" alt="Photo 02" onerror="handleImageError(this)">
-                </div>
-                <div class="photo-item p-3">
-                    <img src="assets/picture03.jpeg" alt="Photo 03" onerror="handleImageError(this)">
-                </div>
-                <div class="photo-item p-4">
-                    <img src="assets/picture04.jpeg" alt="Photo 04" onerror="handleImageError(this)">
-                </div>
-                <div class="photo-item p-5">
-                    <img src="assets/picture05.jpeg" alt="Photo 05" onerror="handleImageError(this)">
-                </div>
+               <div class="photo-grid">
+    <div class="photo-item p-1">
+        <img src="assets/picture01.png" alt="Photo 01" onerror="handleImageError(this)">
+    </div>
+    <div class="photo-item p-2">
+        <img src="assets/picture02.png" alt="Photo 02" onerror="handleImageError(this)">
+    </div>
+    <div class="photo-item p-3">
+        <img src="assets/picture03.jpeg" alt="Photo 03" onerror="handleImageError(this)">
+    </div>
+    <div class="photo-item p-4">
+        <img src="assets/picture04.jpeg" alt="Photo 04" onerror="handleImageError(this)">
+    </div>
+    <div class="photo-item p-5">
+        <img src="assets/picture05.jpeg" alt="Photo 05" onerror="handleImageError(this)">
+    </div>
+    <div class="photo-item p-6">
+        <img src="assets/picture06.jpeg" alt="Photo 06" onerror="handleImageError(this)">
+    </div>
+    <div class="photo-item p-7">
+        <img src="assets/picture07.jpeg" alt="Photo 07" onerror="handleImageError(this)">
+    </div>
+    <div class="photo-item p-8">
+        <img src="assets/picture08.jpeg" alt="Photo 08" onerror="handleImageError(this)">
+    </div>
+</div>
             </div>
             <div class="work-meta">
                 <h3 class="work-title">STREET_FRAGMENTS</h3>
