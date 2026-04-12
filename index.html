@@ -80,7 +80,7 @@
 
         /* Grille */
         .work-grid { padding: 40px; }
-        .work-item { margin-bottom: 120px; }
+        .work-item { margin-bottom: 80px; }  /* Homogène à 80px pour toutes les sections */
         
         .section-label { 
             font-size: 0.7rem; 
@@ -267,7 +267,7 @@
             </div>
         </div>
 
-        <!-- SECTION FASHION - FORMAT VERTICAL (après les 16:9) -->
+        <!-- SECTION FASHION - FORMAT VERTICAL -->
         <div class="work-item">
             <span class="section-label">[ 00_VERTICAL_EDIT ]</span>
             <div class="video-wrapper-vertical">
@@ -312,16 +312,16 @@
     </footer>
 
     <script>
-        // Configuration des 8 images
+        // Configuration des 8 images - Noms exacts de tes assets
         const imageConfigs = [
-            { class: 'p-1', src: 'assets/picture01.png', alt: 'Texture Study 01' },
-            { class: 'p-2', src: 'assets/picture02.png', alt: 'Texture Study 02' },
-            { class: 'p-3', src: 'assets/picture03.jpeg', alt: 'Urban Detail 03' },
-            { class: 'p-4', src: 'assets/picture04.jpeg', alt: 'Industrial Form 04' },
-            { class: 'p-5', src: 'assets/picture05.jpeg', alt: 'Shadow Study 05' },
-            { class: 'p-6', src: 'assets/picture06.jpeg', alt: 'Motion Blur 06' },
-            { class: 'p-7', src: 'assets/picture07.jpeg', alt: 'Street Fragment 07' },
-            { class: 'p-8', src: 'assets/picture08.jpeg', alt: 'Panoramic View 08' }
+            { class: 'p-1', src: 'assets/picture01.png', alt: 'picture01' },
+            { class: 'p-2', src: 'assets/picture02.png', alt: 'picture02' },
+            { class: 'p-3', src: 'assets/picture03.png', alt: 'picture03' },
+            { class: 'p-4', src: 'assets/picture04.png', alt: 'picture04' },
+            { class: 'p-5', src: 'assets/picture05.png', alt: 'picture05' },
+            { class: 'p-6', src: 'assets/picture06.png', alt: 'picture06' },
+            { class: 'p-7', src: 'assets/picture07.png', alt: 'picture07' },
+            { class: 'p-8', src: 'assets/picture08.png', alt: 'picture08' }
         ];
 
         const photoGrid = document.getElementById('photoGrid');
@@ -335,18 +335,19 @@
             img.alt = config.alt;
             
             img.onerror = function() {
-                const baseName = config.src.substring(0, config.src.lastIndexOf('.'));
-                const extensions = ['.jpg', '.jpeg', '.png', '.webp'];
-                const currentExt = config.src.substring(config.src.lastIndexOf('.')).toLowerCase();
-                const nextIndex = extensions.indexOf(currentExt) + 1;
-                
-                if (nextIndex < extensions.length) {
-                    this.src = baseName + extensions[nextIndex];
+                // Essaie avec .jpg si .png ne marche pas
+                if (config.src.endsWith('.png')) {
+                    this.src = config.src.replace('.png', '.jpg');
+                } else if (config.src.endsWith('.jpg')) {
+                    this.src = config.src.replace('.jpg', '.jpeg');
+                } else if (config.src.endsWith('.jpeg')) {
+                    this.src = config.src.replace('.jpeg', '.png');
                 } else {
+                    // Fallback final
                     this.style.display = 'none';
                     const fallback = document.createElement('div');
                     fallback.className = 'img-fallback';
-                    fallback.textContent = `[ ${config.alt.split(' ').pop()} ]`;
+                    fallback.textContent = `[ ${config.alt} ]`;
                     item.appendChild(fallback);
                 }
             };
@@ -354,6 +355,9 @@
             item.appendChild(img);
             photoGrid.appendChild(item);
         });
+
+        // Scroll en haut de page au chargement
+        window.scrollTo(0, 0);
     </script>
 
 </body>
