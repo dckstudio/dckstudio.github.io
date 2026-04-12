@@ -80,7 +80,7 @@
 
         /* Grille */
         .work-grid { padding: 40px; }
-        .work-item { margin-bottom: 80px; }  /* Homogène à 80px pour toutes les sections */
+        .work-item { margin-bottom: 40px; }
         
         .section-label { 
             font-size: 0.7rem; 
@@ -127,10 +127,10 @@
             border: none; 
         }
         
-        /* Photographie - Galerie 8 images */
+        /* Photographie - Galerie 8 images - TOUTES CARRÉES */
         .photo-grid { 
             display: grid; 
-            grid-template-columns: repeat(6, 1fr); 
+            grid-template-columns: repeat(4, 1fr); 
             gap: 15px; 
             margin-bottom: 30px; 
         }
@@ -138,6 +138,7 @@
             overflow: hidden; 
             background: #111; 
             position: relative;
+            aspect-ratio: 1/1; /* TOUTES CARRÉES */
         }
         .photo-item img { 
             width: 100%; 
@@ -164,15 +165,15 @@
             text-transform: none;
         }
 
-        /* Layout pour 8 images */
-        .p-1 { grid-column: span 3; aspect-ratio: 4/3; }
-        .p-2 { grid-column: span 3; aspect-ratio: 4/3; }
-        .p-3 { grid-column: span 2; aspect-ratio: 1/1; }
-        .p-4 { grid-column: span 2; aspect-ratio: 1/1; }
-        .p-5 { grid-column: span 2; aspect-ratio: 1/1; }
-        .p-6 { grid-column: span 3; aspect-ratio: 16/9; }
-        .p-7 { grid-column: span 3; aspect-ratio: 16/9; }
-        .p-8 { grid-column: span 6; aspect-ratio: 21/9; }
+        /* Layout créatif pour 8 images carrées */
+        .p-1 { grid-column: span 1; }
+        .p-2 { grid-column: span 1; }
+        .p-3 { grid-column: span 1; }
+        .p-4 { grid-column: span 1; }
+        .p-5 { grid-column: span 2; } /* Une image plus large mais toujours carrée (2 colonnes) */
+        .p-6 { grid-column: span 1; }
+        .p-7 { grid-column: span 1; }
+        .p-8 { grid-column: span 2; } /* Une autre plus large */
 
         /* Audio */
         .audio-container { margin-top: 30px; }
@@ -218,7 +219,6 @@
             .photo-grid { grid-template-columns: 1fr; }
             .p-1, .p-2, .p-3, .p-4, .p-5, .p-6, .p-7, .p-8 { 
                 grid-column: span 1; 
-                aspect-ratio: 1/1; 
             }
             .video-wrapper-vertical {
                 max-width: 100%;
@@ -279,7 +279,7 @@
             </div>
         </div>
 
-        <!-- SECTION STILLS - 8 IMAGES -->
+        <!-- SECTION STILLS - 8 IMAGES CARRÉES -->
         <div class="work-item">
             <span class="section-label">[ 02_STILLS ]</span>
             <div class="photo-grid" id="photoGrid"></div>
@@ -312,16 +312,16 @@
     </footer>
 
     <script>
-        // Configuration des 8 images - Noms exacts de tes assets
+        // Configuration exacte avec les noms de tes assets
         const imageConfigs = [
             { class: 'p-1', src: 'assets/picture01.png', alt: 'picture01' },
             { class: 'p-2', src: 'assets/picture02.png', alt: 'picture02' },
-            { class: 'p-3', src: 'assets/picture03.png', alt: 'picture03' },
-            { class: 'p-4', src: 'assets/picture04.png', alt: 'picture04' },
-            { class: 'p-5', src: 'assets/picture05.png', alt: 'picture05' },
+            { class: 'p-3', src: 'assets/picture03.jpeg', alt: 'picture03' },
+            { class: 'p-4', src: 'assets/picture04.jpeg', alt: 'picture04' },
+            { class: 'p-5', src: 'assets/picture05.jpeg', alt: 'picture05' },
             { class: 'p-6', src: 'assets/picture06.png', alt: 'picture06' },
             { class: 'p-7', src: 'assets/picture07.png', alt: 'picture07' },
-            { class: 'p-8', src: 'assets/picture08.png', alt: 'picture08' }
+            { class: 'p-8', src: 'assets/picture08.jpg', alt: 'picture08' }
         ];
 
         const photoGrid = document.getElementById('photoGrid');
@@ -335,28 +335,17 @@
             img.alt = config.alt;
             
             img.onerror = function() {
-                // Essaie avec .jpg si .png ne marche pas
-                if (config.src.endsWith('.png')) {
-                    this.src = config.src.replace('.png', '.jpg');
-                } else if (config.src.endsWith('.jpg')) {
-                    this.src = config.src.replace('.jpg', '.jpeg');
-                } else if (config.src.endsWith('.jpeg')) {
-                    this.src = config.src.replace('.jpeg', '.png');
-                } else {
-                    // Fallback final
-                    this.style.display = 'none';
-                    const fallback = document.createElement('div');
-                    fallback.className = 'img-fallback';
-                    fallback.textContent = `[ ${config.alt} ]`;
-                    item.appendChild(fallback);
-                }
+                this.style.display = 'none';
+                const fallback = document.createElement('div');
+                fallback.className = 'img-fallback';
+                fallback.textContent = `[ ${config.alt} ]`;
+                item.appendChild(fallback);
             };
             
             item.appendChild(img);
             photoGrid.appendChild(item);
         });
 
-        // Scroll en haut de page au chargement
         window.scrollTo(0, 0);
     </script>
 
