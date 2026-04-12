@@ -22,9 +22,9 @@
             text-transform: uppercase;
         }
         
-        /* Header - compact */
+        /* Header */
         header { 
-            padding: 20px 20px 15px 20px; 
+            padding: 20px; 
             display: flex; 
             justify-content: space-between; 
             align-items: flex-start;
@@ -60,7 +60,7 @@
         }
         .nav-link:hover { background: #fff; color: #000; }
 
-        /* Hero - compact */
+        /* Hero */
         .hero { padding: 30px 20px; }
         h1 { 
             font-size: clamp(2.5rem, 15vw, 10rem); 
@@ -78,9 +78,9 @@
             text-transform: none; 
         }
 
-        /* Grille - ultra compact */
+        /* Grille */
         .work-grid { padding: 15px 20px; }
-        .work-item { margin-bottom: 10px; }  /* Minimum */
+        .work-item { margin-bottom: 15px; }  /* Un peu d'air mais pas trop */
         
         .section-label { 
             font-size: 0.55rem; 
@@ -107,16 +107,14 @@
             border: none; 
         }
 
-        /* Wrapper Vidéo Vertical (9:16) */
+        /* Wrapper Vidéo Vertical (9:16) - Centré et visible */
         .video-wrapper-vertical { 
             position: relative; 
-            padding-bottom: 177.78%;
-            height: 0; 
-            background: #000; 
-            margin-bottom: 10px;
-            max-width: 350px;
-            margin-left: auto;
-            margin-right: auto;
+            width: 100%;
+            max-width: 360px;
+            margin: 0 auto 10px auto;
+            aspect-ratio: 9/16;
+            background: #000;
         }
         .video-wrapper-vertical iframe { 
             position: absolute; 
@@ -127,7 +125,7 @@
             border: none; 
         }
         
-        /* Photographie - Galerie 8 images */
+        /* Photographie */
         .photo-grid { 
             display: grid; 
             grid-template-columns: repeat(4, 1fr); 
@@ -161,7 +159,6 @@
             justify-content: center;
             color: #333;
             font-size: 0.5rem;
-            text-transform: none;
         }
 
         .p-1, .p-2, .p-3, .p-4, .p-6, .p-7 { grid-column: span 1; }
@@ -171,7 +168,7 @@
         .audio-container { margin-top: 10px; }
         audio { width: 100%; height: 30px; filter: invert(1); }
 
-        /* Méta - compact */
+        /* Méta */
         .work-meta { 
             border-top: 1px solid #fff; 
             padding-top: 8px; 
@@ -207,7 +204,7 @@
             .logo-icon { height: 30px; }
             .work-meta { flex-direction: column; gap: 5px; }
             .work-tags { text-align: left; }
-            .photo-grid { grid-template-columns: 1fr; gap: 5px; }
+            .photo-grid { grid-template-columns: 1fr; }
             .p-1, .p-2, .p-3, .p-4, .p-5, .p-6, .p-7, .p-8 { grid-column: span 1; }
             .video-wrapper-vertical { max-width: 100%; }
         }
