@@ -8,7 +8,7 @@
         :root { 
             --bg: #000000; 
             --text: #ffffff; 
-            --dim: #222; /* Plus sombre pour les séparateurs */
+            --dim: #222; 
             --accent: #888;
         }
         
@@ -28,7 +28,7 @@
             display: flex; 
             justify-content: space-between; 
             align-items: flex-start;
-            border-bottom: 1px solid #111; /* Séparateur très discret */
+            border-bottom: 1px solid #111;
         }
         
         .logo-wrapper {
@@ -78,7 +78,7 @@
             text-transform: none; 
         }
 
-        /* Grille de projets */
+        /* Grille */
         .work-grid { padding: 40px; }
         .work-item { margin-bottom: 120px; }
         
@@ -90,12 +90,12 @@
             display: block; 
         }
 
-        /* Suppression du gris ici */
+        /* Wrapper Vidéo Standard (16:9) */
         .video-wrapper { 
             position: relative; 
             padding-bottom: 56.25%; 
             height: 0; 
-            background: #000; /* Fond noir pur */
+            background: #000; 
             margin-bottom: 30px; 
         }
         .video-wrapper iframe { 
@@ -106,8 +106,28 @@
             height: 100%; 
             border: none; 
         }
+
+        /* Wrapper Vidéo Vertical (9:16) pour le Fashion */
+        .video-wrapper-vertical { 
+            position: relative; 
+            padding-bottom: 177.78%;
+            height: 0; 
+            background: #000; 
+            margin-bottom: 30px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .video-wrapper-vertical iframe { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            border: none; 
+        }
         
-        /* Photographie - NOIR ET BLANC BLOQUÉ */
+        /* Photographie - Galerie 8 images */
         .photo-grid { 
             display: grid; 
             grid-template-columns: repeat(6, 1fr); 
@@ -116,7 +136,7 @@
         }
         .photo-item { 
             overflow: hidden; 
-            background: #000; 
+            background: #111; 
             position: relative;
         }
         .photo-item img { 
@@ -131,19 +151,53 @@
             transform: scale(1.05); 
         }
 
-        /* Layout pour 8 images */
-.p-1, .p-2 { grid-column: span 3; aspect-ratio: 16/9; } /* Deux grandes horizontales */
-.p-3, .p-4, .p-5 { grid-column: span 2; aspect-ratio: 1/1; } /* Trois carrées */
-.p-6, .p-7, .p-8 { grid-column: span 2; aspect-ratio: 1/1; } /* Trois nouvelles carrées */
+        /* Fallback pour images manquantes */
+        .photo-item .img-fallback {
+            width: 100%;
+            height: 100%;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 0.7rem;
+            text-transform: none;
+        }
 
-        /* Lecteur Audio */
+        /* Layout pour 8 images */
+        .p-1 { grid-column: span 3; aspect-ratio: 4/3; }
+        .p-2 { grid-column: span 3; aspect-ratio: 4/3; }
+        .p-3 { grid-column: span 2; aspect-ratio: 1/1; }
+        .p-4 { grid-column: span 2; aspect-ratio: 1/1; }
+        .p-5 { grid-column: span 2; aspect-ratio: 1/1; }
+        .p-6 { grid-column: span 3; aspect-ratio: 16/9; }
+        .p-7 { grid-column: span 3; aspect-ratio: 16/9; }
+        .p-8 { grid-column: span 6; aspect-ratio: 21/9; }
+
+        /* Audio */
         .audio-container { margin-top: 30px; }
         audio { width: 100%; height: 40px; filter: invert(1); }
 
-        /* Méta-données */
-        .work-meta { border-top: 3px solid #fff; padding-top: 20px; display: flex; justify-content: space-between; align-items: flex-start; }
-        .work-title { font-size: 1.8rem; margin: 0; letter-spacing: -0.02em; }
-        .work-tags { font-size: 0.7rem; color: var(--accent); text-align: right; font-weight: 400; text-transform: none; }
+        /* Méta */
+        .work-meta { 
+            border-top: 3px solid #fff; 
+            padding-top: 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+        }
+        .work-title { 
+            font-size: 1.8rem; 
+            margin: 0; 
+            letter-spacing: -0.02em; 
+        }
+        .work-tags { 
+            font-size: 0.7rem; 
+            color: var(--accent); 
+            text-align: right; 
+            font-weight: 400; 
+            text-transform: none; 
+        }
 
         footer { 
             padding: 40px; 
@@ -153,58 +207,30 @@
             display: flex; 
             justify-content: space-between;
         }
-        
+
         @media (max-width: 768px) {
             header, .hero, .work-grid { padding: 20px; }
             .logo-text { font-size: 1.8rem; }
             .logo-icon { height: 40px; }
             .work-meta { flex-direction: column; gap: 10px; }
             .work-tags { text-align: left; }
-            .photo-grid { grid-template-columns: 1fr; }
-            .p-1, .p-2, .p-3, .p-4, .p-5 { grid-column: span 1; aspect-ratio: 1/1; }
-        }
-.portrait-grid { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px; 
-    margin-bottom: 80px; 
-}
-
-.video-wrapper-portrait { 
-    position: relative; 
-    padding-bottom: 177.78%; /* Ratio 9:16 */
-    height: 0; 
-    background: #000; 
-}
-
-.video-wrapper-portrait iframe { 
-    position: absolute; 
-    top: 0; left: 0; width: 100%; height: 100%; 
-    border: none; 
-}
-    </style>
-    <script>
-        function handleImageError(img) {
-            const formats = ['.jpg', '.jpeg', '.png', '.webp'];
-            let currentSrc = img.src;
-            let currentExt = currentSrc.substring(currentSrc.lastIndexOf('.')).toLowerCase();
-            let baseName = currentSrc.substring(0, currentSrc.lastIndexOf('.'));
             
-            let nextIndex = formats.indexOf(currentExt) + 1;
-            if (nextIndex < formats.length) {
-                img.src = baseName + formats[nextIndex];
-            } else {
-                img.style.display = 'none';
-                img.parentElement.style.background = '#000';
+            .photo-grid { grid-template-columns: 1fr; }
+            .p-1, .p-2, .p-3, .p-4, .p-5, .p-6, .p-7, .p-8 { 
+                grid-column: span 1; 
+                aspect-ratio: 1/1; 
+            }
+            .video-wrapper-vertical {
+                max-width: 100%;
             }
         }
-    </script>
+    </style>
 </head>
 <body>
 
     <header>
         <div class="logo-wrapper">
-            <img src="assets/dckstudio_logo_W_png.png" alt="Logo" class="logo-icon">
+            <img src="assets/dckstudio_logo_W_png.png" alt="DCK Studio Logo" class="logo-icon">
             <div class="logo-text">DCK<br>STUDIO</div>
         </div>
         <a href="mailto:dckstudio@proton.me" class="nav-link">CONTACT_INQUIRY</a>
@@ -217,6 +243,7 @@
 
     <main class="work-grid">
         
+        <!-- SECTION MOTION A - 16:9 -->
         <div class="work-item">
             <span class="section-label">[ 01_MOTION_A ]</span>
             <div class="video-wrapper">
@@ -228,6 +255,7 @@
             </div>
         </div>
 
+        <!-- SECTION MOTION B - 16:9 -->
         <div class="work-item">
             <span class="section-label">[ 01_MOTION_B ]</span>
             <div class="video-wrapper">
@@ -238,75 +266,30 @@
                 <div class="work-tags">Director - Original Music<br>Simulation 35mm / 2026</div>
             </div>
         </div>
-<div class="work-item">
-    <span class="section-label">[ 01_MOTION_PORTRAIT ]</span>
-    <div class="portrait-grid">
-        
-        <div class="video-wrapper-portrait">
-            <iframe 
-                src="https://player.vimeo.com/video/1182381695?background=1&muted=1&autoplay=1&loop=1&byline=0&title=0&portrait=0" 
-                allow="autoplay; fullscreen" 
-                allowfullscreen>
-            </iframe>
-        </div>
 
-        <div class="video-wrapper-portrait">
-            <div style="width:100%; height:100%; background:#111; display:flex; align-items:center; justify-content:center; color:#333; font-size:0.6rem;">[ PENDING_STUDY_02 ]</div>
-        </div>
-
-        <div class="video-wrapper-portrait">
-            <div style="width:100%; height:100%; background:#111; display:flex; align-items:center; justify-content:center; color:#333; font-size:0.6rem;">[ PENDING_STUDY_03 ]</div>
-        </div>
-
-    </div>
-    <div class="work-meta">
-        <h3 class="work-title">FASHION_VERTICAL_STUDIES</h3>
-        <div class="work-tags">Vertical Content / Color Grading<br>Experimental Fashion / 2026</div>
-    </div>
-
-
-    </div>
-    <div class="work-meta">
-        <h3 class="work-title">FASHION_VERTICAL_STUDIES</h3>
-        <div class="work-tags">Vertical Content / Color Grading<br>Experimental Fashion / 2026</div>
-    </div>
-</div>
+        <!-- SECTION FASHION - FORMAT VERTICAL (après les 16:9) -->
         <div class="work-item">
-            <span class="section-label">[ 02_STILLS ]</span>
-            <div class="photo-grid">
-               <div class="photo-grid">
-    <div class="photo-item p-1">
-        <img src="assets/picture01.png" alt="Photo 01" onerror="handleImageError(this)">
-    </div>
-    <div class="photo-item p-2">
-        <img src="assets/picture02.png" alt="Photo 02" onerror="handleImageError(this)">
-    </div>
-    <div class="photo-item p-3">
-        <img src="assets/picture03.jpeg" alt="Photo 03" onerror="handleImageError(this)">
-    </div>
-    <div class="photo-item p-4">
-        <img src="assets/picture04.jpeg" alt="Photo 04" onerror="handleImageError(this)">
-    </div>
-    <div class="photo-item p-5">
-        <img src="assets/picture05.jpeg" alt="Photo 05" onerror="handleImageError(this)">
-    </div>
-    <div class="photo-item p-6">
-        <img src="assets/picture06.jpeg" alt="Photo 06" onerror="handleImageError(this)">
-    </div>
-    <div class="photo-item p-7">
-        <img src="assets/picture07.jpeg" alt="Photo 07" onerror="handleImageError(this)">
-    </div>
-    <div class="photo-item p-8">
-        <img src="assets/picture08.jpeg" alt="Photo 08" onerror="handleImageError(this)">
-    </div>
-</div>
+            <span class="section-label">[ 00_VERTICAL_EDIT ]</span>
+            <div class="video-wrapper-vertical">
+                <iframe src="https://player.vimeo.com/video/1182381695?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
             <div class="work-meta">
-                <h3 class="work-title">STREET_FRAGMENTS</h3>
-                <div class="work-tags">Narrative Still Series<br>Istanbul / Anatolia / 2026</div>
+                <h3 class="work-title">FASHION_REEL_01</h3>
+                <div class="work-tags">Vertical Edit / Social Cut<br>Street Casting // 2026</div>
             </div>
         </div>
 
+        <!-- SECTION STILLS - 8 IMAGES -->
+        <div class="work-item">
+            <span class="section-label">[ 02_STILLS ]</span>
+            <div class="photo-grid" id="photoGrid"></div>
+            <div class="work-meta">
+                <h3 class="work-title">TEXTURE_STUDIES</h3>
+                <div class="work-tags">Narrative Still Series (8 Frames)<br>Istanbul / Anatolia / 2026</div>
+            </div>
+        </div>
+
+        <!-- SECTION SOUND -->
         <div class="work-item">
             <span class="section-label">[ 03_SOUND ]</span>
             <div class="work-meta">
@@ -316,6 +299,7 @@
             <div class="audio-container">
                 <audio controls>
                     <source src="assets/soundscape.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
                 </audio>
             </div>
         </div>
@@ -326,6 +310,51 @@
         <span>DCK STUDIO / 2026</span>
         <span>41.0082° N, 28.9784° E</span>
     </footer>
+
+    <script>
+        // Configuration des 8 images
+        const imageConfigs = [
+            { class: 'p-1', src: 'assets/picture01.png', alt: 'Texture Study 01' },
+            { class: 'p-2', src: 'assets/picture02.png', alt: 'Texture Study 02' },
+            { class: 'p-3', src: 'assets/picture03.jpeg', alt: 'Urban Detail 03' },
+            { class: 'p-4', src: 'assets/picture04.jpeg', alt: 'Industrial Form 04' },
+            { class: 'p-5', src: 'assets/picture05.jpeg', alt: 'Shadow Study 05' },
+            { class: 'p-6', src: 'assets/picture06.jpeg', alt: 'Motion Blur 06' },
+            { class: 'p-7', src: 'assets/picture07.jpeg', alt: 'Street Fragment 07' },
+            { class: 'p-8', src: 'assets/picture08.jpeg', alt: 'Panoramic View 08' }
+        ];
+
+        const photoGrid = document.getElementById('photoGrid');
+
+        imageConfigs.forEach(config => {
+            const item = document.createElement('div');
+            item.className = `photo-item ${config.class}`;
+            
+            const img = document.createElement('img');
+            img.src = config.src;
+            img.alt = config.alt;
+            
+            img.onerror = function() {
+                const baseName = config.src.substring(0, config.src.lastIndexOf('.'));
+                const extensions = ['.jpg', '.jpeg', '.png', '.webp'];
+                const currentExt = config.src.substring(config.src.lastIndexOf('.')).toLowerCase();
+                const nextIndex = extensions.indexOf(currentExt) + 1;
+                
+                if (nextIndex < extensions.length) {
+                    this.src = baseName + extensions[nextIndex];
+                } else {
+                    this.style.display = 'none';
+                    const fallback = document.createElement('div');
+                    fallback.className = 'img-fallback';
+                    fallback.textContent = `[ ${config.alt.split(' ').pop()} ]`;
+                    item.appendChild(fallback);
+                }
+            };
+            
+            item.appendChild(img);
+            photoGrid.appendChild(item);
+        });
+    </script>
 
 </body>
 </html>
