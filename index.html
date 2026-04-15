@@ -41,16 +41,22 @@
             body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         }
 
-        /* Background image */
+        /* BACKGROUND IMAGE - CONFIGURÉE SELON TES INSTRUCTIONS */
+        /* Position : bas droite, déborde vers le bas */
         .fixed-bg {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('assets/picture01.png');
+            top: auto;
+            right: 0;
+            bottom: -15%;
+            width: 70%;
+            height: 90%;
+            background-image: url('assets/background.png'); /* ← REMPLACE PAR TON NOM DE FICHIER */
             background-size: cover;
-            background-position: center;
-            filter: grayscale(1) contrast(1.4) brightness(0.12);
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            filter: grayscale(1) contrast(1.4) brightness(0.15);
             z-index: -1;
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .sidebar-line {
@@ -64,8 +70,8 @@
         .main-wrapper {
             margin-left: 20px;
             border-left: var(--border-width) solid var(--text);
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(8px);
         }
 
         /* Header */
@@ -108,7 +114,6 @@
             font-weight: 900;
             letter-spacing: -0.06em;
             line-height: 0.8;
-            text-transform: uppercase;
             color: var(--text);
         }
 
@@ -331,6 +336,7 @@
             .video-box-vertical { max-width: 100%; }
             .logo-text { font-size: 2.5rem; }
             .item-title { font-size: 2rem; }
+            .fixed-bg { width: 100%; bottom: -20%; }
         }
     </style>
 </head>
@@ -448,7 +454,7 @@
         const bg = document.getElementById('bg');
         window.addEventListener('scroll', () => {
             const scroll = window.pageYOffset;
-            bg.style.transform = `scale(1.05) translateY(${scroll * 0.1}px)`;
+            bg.style.transform = `scale(1.08) translateY(${scroll * 0.03}px)`;
         });
 
         const imageConfigs = [
@@ -478,18 +484,6 @@
 
         const logoImg = document.getElementById('logoImg');
         logoImg.onerror = function() {
-            if (this.src.includes('./')) {
-                this.src = 'assets/dckstudio_logo_W_png.png';
-                return;
-            }
-            if (this.src.endsWith('.png')) {
-                this.src = 'assets/dckstudio_logo_W.jpg';
-                return;
-            }
-            if (this.src.endsWith('.jpg')) {
-                this.src = 'assets/dckstudio_logo_W.jpeg';
-                return;
-            }
             this.style.display = 'none';
             const parent = this.parentElement;
             parent.style.background = '#fff';
