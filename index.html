@@ -17,7 +17,7 @@
             --bg: #000000;
             --text: #ffffff;
             --accent: #333;
-            --border-width: 2px;
+            --border-width: 3px;
         }
 
         * {
@@ -34,6 +34,7 @@
             line-height: 1;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            font-weight: 700;
         }
 
         @supports not (font-family: 'Sistemas') {
@@ -47,7 +48,7 @@
             background-image: url('assets/picture01.png');
             background-size: cover;
             background-position: center;
-            filter: grayscale(1) contrast(1.2) brightness(0.15);
+            filter: grayscale(1) contrast(1.4) brightness(0.12);
             z-index: -1;
             transform: scale(1.05);
         }
@@ -55,60 +56,66 @@
         .sidebar-line {
             position: fixed;
             left: 0; top: 0; bottom: 0;
-            width: 15px;
+            width: 20px;
             background: var(--text);
             z-index: 100;
         }
 
         .main-wrapper {
-            margin-left: 15px;
+            margin-left: 20px;
             border-left: var(--border-width) solid var(--text);
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(10px);
         }
 
-        /* Header */
+        /* Header - BRUTALISTE */
         header {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.2fr 0.8fr;
             border-bottom: var(--border-width) solid var(--text);
             position: sticky;
             top: 0;
-            background: var(--bg);
+            background: #000;
             z-index: 90;
         }
 
         .logo-section {
-            padding: 30px;
+            padding: 35px 40px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             border-right: var(--border-width) solid var(--text);
         }
 
         .logo-box {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: transparent;
         }
         
         .logo-box img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            filter: brightness(0) invert(1); /* Force le logo en blanc */
+            filter: brightness(0) invert(1);
         }
 
         .logo-text {
-            font-size: 1.8rem;
-            letter-spacing: -0.05em;
+            font-size: 3.2rem;
+            font-weight: 900;
+            letter-spacing: -0.08em;
             line-height: 0.8;
+            text-transform: uppercase;
+            -webkit-text-stroke: 1px var(--text);
+            text-stroke: 1px var(--text);
+            color: var(--text);
         }
 
         .nav-section {
-            padding: 30px;
+            padding: 35px 40px;
             display: flex;
             justify-content: flex-end;
             align-items: center;
@@ -117,45 +124,50 @@
         .contact-link {
             text-decoration: none;
             color: var(--text);
-            font-size: 0.8rem;
-            letter-spacing: 0.2em;
-            border: 1px solid var(--text);
-            padding: 12px 24px;
-            transition: 0.2s ease;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            border: var(--border-width) solid var(--text);
+            padding: 15px 30px;
+            transition: 0.15s ease;
+            background: transparent;
         }
 
         .contact-link:hover {
             background: var(--text);
             color: var(--bg);
-            transform: skewX(-5deg);
         }
 
-        /* Hero */
+        /* Hero - BRUTALISTE */
         .hero {
-            padding: 100px 30px;
+            padding: 120px 40px;
             border-bottom: var(--border-width) solid var(--text);
         }
 
         h1 {
-            font-size: clamp(3.5rem, 16vw, 12rem);
+            font-size: clamp(4rem, 18vw, 15rem);
+            font-weight: 900;
             margin: 0;
-            letter-spacing: -0.07em;
-            line-height: 0.8;
+            letter-spacing: -0.08em;
+            line-height: 0.75;
+            -webkit-text-stroke: 2px var(--text);
+            text-stroke: 2px var(--text);
         }
 
         .hero-desc-container {
             display: grid;
             grid-template-columns: 1fr 1.2fr;
-            margin-top: 80px;
+            margin-top: 100px;
         }
 
         .hero-desc {
             grid-column: 2;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
             text-transform: none;
-            line-height: 1.5;
-            color: #aaa;
-            padding: 40px;
+            line-height: 1.4;
+            color: #bbb;
+            padding: 50px;
             border-left: var(--border-width) solid var(--text);
             margin: 0;
         }
@@ -176,12 +188,14 @@
         }
 
         .item-label {
-            padding: 25px;
-            font-size: 0.7rem;
-            color: #888;
+            padding: 30px 40px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #777;
             display: flex;
             justify-content: space-between;
-            border-bottom: 1px solid var(--accent);
+            border-bottom: 2px solid var(--accent);
+            letter-spacing: 0.2em;
         }
 
         /* Media containers */
@@ -196,7 +210,7 @@
         .video-box-vertical {
             width: 100%;
             aspect-ratio: 9/16;
-            max-width: 360px;
+            max-width: 400px;
             margin: 0 auto;
             background: #000;
             overflow: hidden;
@@ -207,8 +221,8 @@
             width: 100%;
             height: 100%;
             border: none;
-            filter: grayscale(1) contrast(1.1);
-            transition: filter 0.5s ease;
+            filter: grayscale(1) contrast(1.2);
+            transition: filter 0.4s ease;
         }
 
         .grid-item:hover iframe {
@@ -218,9 +232,9 @@
         .stills-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2px;
+            gap: 3px;
             background: var(--text);
-            padding: 2px;
+            padding: 3px;
         }
 
         .still-item {
@@ -232,8 +246,8 @@
         .still-item img {
             width: 100%; height: 100%;
             object-fit: cover;
-            filter: grayscale(1);
-            transition: 0.5s ease;
+            filter: grayscale(1) contrast(1.2);
+            transition: 0.4s ease;
         }
 
         .still-item:hover img {
@@ -246,60 +260,70 @@
 
         /* Audio player */
         .audio-container {
-            padding: 30px;
-            background: #050505;
+            padding: 40px;
+            background: #000;
         }
         
         audio {
             width: 100%;
-            height: 40px;
-            filter: invert(1) contrast(0.8);
-            opacity: 0.8;
+            height: 45px;
+            filter: invert(1) contrast(0.9);
+            opacity: 0.9;
         }
 
-        /* Metadata info */
+        /* Metadata info - BRUTALISTE */
         .item-meta {
-            padding: 40px 25px;
+            padding: 50px 40px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
         }
 
         .item-title {
-            font-size: 2rem;
-            letter-spacing: -0.05em;
+            font-size: 2.8rem;
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            -webkit-text-stroke: 1px var(--text);
+            text-stroke: 1px var(--text);
         }
 
         .item-tags {
-            font-size: 0.7rem;
+            font-size: 0.8rem;
+            font-weight: 600;
             text-align: right;
-            color: #666;
-            line-height: 1.6;
+            color: #555;
+            line-height: 1.8;
+            letter-spacing: 0.1em;
         }
 
-        /* Footer */
+        /* Footer - BRUTALISTE */
         footer {
             padding: 80px 40px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            font-size: 0.8rem;
-            color: #888;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #666;
             position: relative;
             overflow: hidden;
+            border-top: var(--border-width) solid var(--text);
         }
 
         .big-footer-title {
-            font-size: 8vw;
+            font-size: 10vw;
+            font-weight: 900;
             letter-spacing: -0.08em;
             color: var(--text);
-            opacity: 0.08;
+            opacity: 0.06;
             position: absolute;
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             pointer-events: none;
             white-space: nowrap;
+            -webkit-text-stroke: 2px var(--text);
+            text-stroke: 2px var(--text);
         }
 
         /* Mobile */
@@ -307,10 +331,12 @@
             .content-grid, .hero-desc-container, header { grid-template-columns: 1fr; }
             .grid-item:nth-child(odd) { border-right: none; }
             .hero-desc { grid-column: 1; border-left: none; border-top: var(--border-width) solid var(--text); }
-            h1 { font-size: 20vw; }
+            h1 { font-size: 18vw; }
             .stills-grid { grid-template-columns: repeat(2, 1fr); }
             .logo-section { border-right: none; }
             .video-box-vertical { max-width: 100%; }
+            .logo-text { font-size: 2.5rem; }
+            .item-title { font-size: 2rem; }
         }
     </style>
 </head>
@@ -328,7 +354,7 @@
                 <div class="logo-text">DCK<br>STUDIO</div>
             </div>
             <div class="nav-section">
-                <a href="mailto:dckstudio@proton.me" class="contact-link">INQUIRE_NOW</a>
+                <a href="mailto:dckstudio@proton.me" class="contact-link">INQUIRE</a>
             </div>
         </header>
 
@@ -344,7 +370,7 @@
 
         <main class="content-grid">
             
-            <!-- PROJECT 01 - VISUAL RESEARCH I -->
+            <!-- PROJECT 01 -->
             <article class="grid-item">
                 <div class="item-label">
                     <span>[ 01_MOTION_A ]</span>
@@ -359,7 +385,7 @@
                 </div>
             </article>
 
-            <!-- PROJECT 02 - VISUAL RESEARCH II -->
+            <!-- PROJECT 02 -->
             <article class="grid-item">
                 <div class="item-label">
                     <span>[ 01_MOTION_B ]</span>
@@ -374,7 +400,7 @@
                 </div>
             </article>
 
-            <!-- PROJECT 03 - FASHION REEL (VERTICAL) -->
+            <!-- PROJECT 03 - FASHION -->
             <article class="grid-item grid-full-width">
                 <div class="item-label">
                     <span>[ 00_VERTICAL_EDIT ]</span>
@@ -389,7 +415,7 @@
                 </div>
             </article>
 
-            <!-- STILLS - 8 IMAGES -->
+            <!-- STILLS -->
             <article class="grid-item grid-full-width">
                 <div class="item-label">
                     <span>[ 02_STILLS ]</span>
@@ -430,14 +456,12 @@
     </div>
 
     <script>
-        // Parallax scroll effect
         const bg = document.getElementById('bg');
         window.addEventListener('scroll', () => {
             const scroll = window.pageYOffset;
             bg.style.transform = `scale(1.05) translateY(${scroll * 0.1}px)`;
         });
 
-        // Injection des 8 images
         const imageConfigs = [
             'assets/picture01.png',
             'assets/picture02.png',
@@ -454,51 +478,37 @@
         imageConfigs.forEach(src => {
             const item = document.createElement('div');
             item.className = 'still-item';
-            
             const img = document.createElement('img');
             img.src = src;
             img.alt = 'Still';
             img.loading = 'lazy';
-            
-            img.onerror = function() {
-                this.style.backgroundColor = '#111';
-            };
-            
+            img.onerror = function() { this.style.backgroundColor = '#111'; };
             item.appendChild(img);
             stillsGrid.appendChild(item);
         });
 
-        // Vérification et fallback pour le logo
         const logoImg = document.getElementById('logoImg');
-        
-        // Teste différentes extensions si .png ne marche pas
         logoImg.onerror = function() {
-            // Essaie sans le ./
             if (this.src.includes('./')) {
                 this.src = 'assets/dckstudio_logo_W_png.png';
                 return;
             }
-            // Essaie .jpg
             if (this.src.endsWith('.png')) {
                 this.src = 'assets/dckstudio_logo_W.jpg';
                 return;
             }
-            // Essaie .jpeg
             if (this.src.endsWith('.jpg')) {
                 this.src = 'assets/dckstudio_logo_W.jpeg';
                 return;
             }
-            // Fallback final : texte DCK dans un carré blanc
             this.style.display = 'none';
             const parent = this.parentElement;
             parent.style.background = '#fff';
             parent.style.color = '#000';
-            parent.style.fontSize = '1.5rem';
-            parent.style.fontWeight = 'bold';
+            parent.style.fontSize = '2rem';
+            parent.style.fontWeight = '900';
             parent.textContent = 'DCK';
         };
-        
-        // Force un rechargement
         logoImg.src = logoImg.src;
 
         window.scrollTo(0, 0);
