@@ -64,11 +64,11 @@
         .main-wrapper {
             margin-left: 20px;
             border-left: var(--border-width) solid var(--text);
-            background: rgba(0,0,0,0.75);
+            background: rgba(0,0,0,0.8);
             backdrop-filter: blur(10px);
         }
 
-        /* Header - BRUTALISTE */
+        /* Header */
         header {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
@@ -104,13 +104,11 @@
         }
 
         .logo-text {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 900;
-            letter-spacing: -0.08em;
+            letter-spacing: -0.06em;
             line-height: 0.8;
             text-transform: uppercase;
-            -webkit-text-stroke: 1px var(--text);
-            text-stroke: 1px var(--text);
             color: var(--text);
         }
 
@@ -138,20 +136,19 @@
             color: var(--bg);
         }
 
-        /* Hero - BRUTALISTE */
+        /* Hero */
         .hero {
             padding: 120px 40px;
             border-bottom: var(--border-width) solid var(--text);
         }
 
         h1 {
-            font-size: clamp(4rem, 18vw, 15rem);
+            font-size: clamp(4.5rem, 18vw, 15rem);
             font-weight: 900;
             margin: 0;
-            letter-spacing: -0.08em;
+            letter-spacing: -0.06em;
             line-height: 0.75;
-            -webkit-text-stroke: 2px var(--text);
-            text-stroke: 2px var(--text);
+            color: var(--text);
         }
 
         .hero-desc-container {
@@ -271,7 +268,7 @@
             opacity: 0.9;
         }
 
-        /* Metadata info - BRUTALISTE */
+        /* Metadata info */
         .item-meta {
             padding: 50px 40px;
             display: flex;
@@ -283,8 +280,7 @@
             font-size: 2.8rem;
             font-weight: 900;
             letter-spacing: -0.06em;
-            -webkit-text-stroke: 1px var(--text);
-            text-stroke: 1px var(--text);
+            color: var(--text);
         }
 
         .item-tags {
@@ -296,7 +292,7 @@
             letter-spacing: 0.1em;
         }
 
-        /* Footer - BRUTALISTE */
+        /* Footer */
         footer {
             padding: 80px 40px;
             display: flex;
@@ -322,8 +318,6 @@
             transform: translateX(-50%);
             pointer-events: none;
             white-space: nowrap;
-            -webkit-text-stroke: 2px var(--text);
-            text-stroke: 2px var(--text);
         }
 
         /* Mobile */
@@ -331,7 +325,7 @@
             .content-grid, .hero-desc-container, header { grid-template-columns: 1fr; }
             .grid-item:nth-child(odd) { border-right: none; }
             .hero-desc { grid-column: 1; border-left: none; border-top: var(--border-width) solid var(--text); }
-            h1 { font-size: 18vw; }
+            h1 { font-size: 16vw; }
             .stills-grid { grid-template-columns: repeat(2, 1fr); }
             .logo-section { border-right: none; }
             .video-box-vertical { max-width: 100%; }
@@ -370,7 +364,6 @@
 
         <main class="content-grid">
             
-            <!-- PROJECT 01 -->
             <article class="grid-item">
                 <div class="item-label">
                     <span>[ 01_MOTION_A ]</span>
@@ -385,7 +378,6 @@
                 </div>
             </article>
 
-            <!-- PROJECT 02 -->
             <article class="grid-item">
                 <div class="item-label">
                     <span>[ 01_MOTION_B ]</span>
@@ -400,7 +392,6 @@
                 </div>
             </article>
 
-            <!-- PROJECT 03 - FASHION -->
             <article class="grid-item grid-full-width">
                 <div class="item-label">
                     <span>[ 00_VERTICAL_EDIT ]</span>
@@ -415,7 +406,6 @@
                 </div>
             </article>
 
-            <!-- STILLS -->
             <article class="grid-item grid-full-width">
                 <div class="item-label">
                     <span>[ 02_STILLS ]</span>
@@ -428,7 +418,6 @@
                 </div>
             </article>
 
-            <!-- SOUND -->
             <article class="grid-item grid-full-width">
                 <div class="item-label">
                     <span>[ 03_SOUND ]</span>
