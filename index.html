@@ -7,17 +7,15 @@
     <style>
         @font-face {
             font-family: 'Sistemas';
-            src: url('SISTEMAS FONT BT.ttf') format('truetype');
+            src: url('assets/SISTEMAS FONT BT.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
 
         :root {
-            --bg: #000000;
             --text: #ffffff;
-            --accent: #333;
-            --border-width: 3px;
+            --border-width: 1px;
         }
 
         * {
@@ -27,7 +25,6 @@
 
         body {
             margin: 0;
-            background: var(--bg);
             color: var(--text);
             font-family: 'Sistemas', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             text-transform: uppercase;
@@ -41,22 +38,18 @@
             body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         }
 
-        /* BACKGROUND IMAGE - FULL SCREEN AVEC BLEND MODE LINEAR DODGE */
+        /* Image de fond BRUTE - HG5A1795.png */
         .fixed-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('assets/HG5A1648.png');
+            background-image: url('assets/HG5A1795.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            filter: grayscale(1) contrast(1.5) brightness(0.8);
-            mix-blend-mode: lighten;        /* Effet linear-dodge like */
-            opacity: 0.7;
-            z-index: 2;
-            pointer-events: none;
+            z-index: 1;
         }
 
         .sidebar-line {
@@ -70,20 +63,19 @@
         .main-wrapper {
             margin-left: 20px;
             border-left: var(--border-width) solid var(--text);
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(3px);
+            background: transparent;
             position: relative;
             z-index: 10;
         }
 
-        /* Header */
+        /* Header - TRANSPARENT */
         header {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
             border-bottom: var(--border-width) solid var(--text);
             position: sticky;
             top: 0;
-            background: #000;
+            background: transparent;
             z-index: 90;
         }
 
@@ -93,6 +85,7 @@
             align-items: center;
             gap: 25px;
             border-right: var(--border-width) solid var(--text);
+            background: transparent;
         }
 
         .logo-box {
@@ -124,6 +117,7 @@
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            background: transparent;
         }
 
         .contact-link {
@@ -140,13 +134,14 @@
 
         .contact-link:hover {
             background: var(--text);
-            color: var(--bg);
+            color: #000;
         }
 
-        /* Hero */
+        /* Hero - TRANSPARENT */
         .hero {
             padding: 120px 40px;
             border-bottom: var(--border-width) solid var(--text);
+            background: transparent;
         }
 
         h1 {
@@ -170,52 +165,46 @@
             font-weight: 600;
             text-transform: none;
             line-height: 1.4;
-            color: #bbb;
+            color: #fff;
             padding: 50px;
             border-left: var(--border-width) solid var(--text);
             margin: 0;
+            background: transparent;
         }
 
         /* Content Grid */
         .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: block;
         }
 
-        .grid-item {
+        .video-section {
             border-bottom: var(--border-width) solid var(--text);
-            position: relative;
         }
 
-        .grid-item:nth-child(odd) {
-            border-right: var(--border-width) solid var(--text);
+        .video-item {
+            border-bottom: 1px solid #333;
+        }
+
+        .video-item:last-of-type {
+            border-bottom: none;
         }
 
         .item-label {
             padding: 30px 40px;
             font-size: 0.9rem;
             font-weight: 700;
-            color: #777;
+            color: #fff;
             display: flex;
             justify-content: space-between;
-            border-bottom: 2px solid var(--accent);
+            border-bottom: 1px solid #444;
             letter-spacing: 0.2em;
+            background: transparent;
         }
 
-        /* Media containers */
+        /* Media containers - 16:9 */
         .video-box {
             width: 100%;
             aspect-ratio: 16/9;
-            background: #000;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .video-box-vertical {
-            width: 100%;
-            aspect-ratio: 9/16;
-            max-width: 400px;
-            margin: 0 auto;
             background: #000;
             overflow: hidden;
             position: relative;
@@ -225,66 +214,86 @@
             width: 100%;
             height: 100%;
             border: none;
-            filter: grayscale(1) contrast(1.2);
+            filter: grayscale(1) contrast(1.2) brightness(0.9);
             transition: filter 0.4s ease;
         }
 
-        .grid-item:hover iframe {
-            filter: grayscale(0) brightness(1.1);
+        .video-box:hover iframe {
+            filter: grayscale(0) contrast(1) brightness(1);
         }
 
-        .stills-grid {
+        /* SECTION VERTICALE - 3 VIDÉOS CÔTE À CÔTE */
+        .vertical-section {
+            border-bottom: var(--border-width) solid var(--text);
+        }
+
+        .vertical-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3px;
-            background: var(--text);
-            padding: 3px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: #333;
+            padding: 1px;
         }
 
-        .still-item {
-            aspect-ratio: 1/1;
+        .vertical-item {
+            background: #000;
+        }
+
+        .vertical-video-box {
+            width: 100%;
+            aspect-ratio: 9/16;
             background: #000;
             overflow: hidden;
+            position: relative;
         }
 
-        .still-item img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            filter: grayscale(1) contrast(1.2);
-            transition: 0.4s ease;
-        }
-
-        .still-item:hover img {
-            filter: grayscale(0);
-        }
-
-        .grid-full-width {
-            grid-column: 1 / span 2;
-        }
-
-        /* Audio player */
-        .audio-container {
-            padding: 40px;
-            background: #000;
-        }
-        
-        audio {
+        .vertical-video-box iframe {
             width: 100%;
-            height: 45px;
-            filter: invert(1) contrast(0.9);
-            opacity: 0.9;
+            height: 100%;
+            border: none;
+            filter: grayscale(1) contrast(1.2) brightness(0.9);
+            transition: filter 0.4s ease;
+        }
+
+        .vertical-video-box:hover iframe {
+            filter: grayscale(0) contrast(1) brightness(1);
+        }
+
+        .vertical-meta {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            background: transparent;
+        }
+
+        .vertical-title {
+            font-size: 1.2rem;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            color: var(--text);
+        }
+
+        .vertical-tags {
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-align: right;
+            color: #fff;
+            line-height: 1.5;
+            letter-spacing: 0.1em;
         }
 
         /* Metadata info */
         .item-meta {
-            padding: 50px 40px;
+            padding: 40px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
+            background: transparent;
         }
 
         .item-title {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: 900;
             letter-spacing: -0.06em;
             color: var(--text);
@@ -294,9 +303,56 @@
             font-size: 0.8rem;
             font-weight: 600;
             text-align: right;
-            color: #555;
+            color: #fff;
             line-height: 1.8;
             letter-spacing: 0.1em;
+        }
+
+        /* Stills Grid */
+        .stills-section {
+            display: block;
+        }
+
+        .stills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--text);
+            padding: 1px;
+        }
+
+        .still-item {
+            aspect-ratio: 1/1;
+            background: #000;
+            overflow: hidden;
+        }
+
+        .still-item img {
+            width: 100%; 
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(1) contrast(1.2);
+            transition: filter 0.4s ease;
+        }
+
+        .still-item:hover img {
+            filter: grayscale(0) contrast(1);
+        }
+
+        /* Audio player */
+        .audio-section {
+            border-top: var(--border-width) solid var(--text);
+        }
+
+        .audio-container {
+            padding: 40px;
+            background: transparent;
+        }
+        
+        audio {
+            width: 100%;
+            height: 45px;
+            filter: invert(1);
         }
 
         /* Footer */
@@ -307,10 +363,11 @@
             align-items: flex-end;
             font-size: 1rem;
             font-weight: 700;
-            color: #666;
+            color: #fff;
             position: relative;
             overflow: hidden;
             border-top: var(--border-width) solid var(--text);
+            background: transparent;
         }
 
         .big-footer-title {
@@ -318,7 +375,7 @@
             font-weight: 900;
             letter-spacing: -0.08em;
             color: var(--text);
-            opacity: 0.06;
+            opacity: 0.15;
             position: absolute;
             bottom: 20px;
             left: 50%;
@@ -329,33 +386,27 @@
 
         /* Mobile */
         @media (max-width: 1024px) {
-            .content-grid, .hero-desc-container, header { grid-template-columns: 1fr; }
-            .grid-item:nth-child(odd) { border-right: none; }
+            .hero-desc-container, header { grid-template-columns: 1fr; }
             .hero-desc { grid-column: 1; border-left: none; border-top: var(--border-width) solid var(--text); }
             h1 { font-size: 16vw; }
             .stills-grid { grid-template-columns: repeat(2, 1fr); }
             .logo-section { border-right: none; }
-            .video-box-vertical { max-width: 100%; }
             .logo-text { font-size: 2.5rem; }
-            .item-title { font-size: 2rem; }
+            .item-title { font-size: 1.8rem; }
+            .vertical-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Fond noir de base -->
-    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 1;"></div>
-    
-    <!-- Image avec blend mode par-dessus -->
     <div class="fixed-bg"></div>
-    
     <div class="sidebar-line"></div>
 
     <div class="main-wrapper">
         <header>
             <div class="logo-section">
                 <div class="logo-box">
-                    <img src="./assets/dckstudio_logo_W_png.png" alt="DCK Studio" id="logoImg">
+                    <img src="assets/dckstudio_logo_W_png.png" alt="DCK Studio" id="logoImg">
                 </div>
                 <div class="logo-text">DCK<br>STUDIO</div>
             </div>
@@ -368,90 +419,203 @@
             <h1>BEYOND<br>THE FRAME</h1>
             <div class="hero-desc-container">
                 <p class="hero-desc">
-                    Independent Creative Lab. High-end visual research, social documentary 
-                    and industrial soundscapes based in Istanbul.
+                    Independent Creative Lab. Raw visual research, singular essays, experimental shorts 
+                    and industrial soundscapes.
                 </p>
             </div>
         </section>
 
         <main class="content-grid">
             
-            <article class="grid-item">
-                <div class="item-label">
-                    <span>[ 01_MOTION_A ]</span>
-                    <span>41.00°N 28.97°E</span>
+            <!-- SECTION VIDÉOS 16:9 -->
+            <div class="video-section">
+                
+                <!-- VIDÉO 1 - 23h23_Silence (1114696618) -->
+                <div class="video-item">
+                    <div class="item-label">
+                        <span>[ MOTION_01 ]</span>
+                        <span>23H23_SILENCE</span>
+                    </div>
+                    <div class="video-box">
+                        <iframe src="https://player.vimeo.com/video/1114696618?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                    <div class="item-meta">
+                        <div class="item-title">23H23_SILENCE</div>
+                        <div class="item-tags">Direction / Editing<br>DCKSTUDIO</div>
+                    </div>
                 </div>
-                <div class="video-box">
-                    <iframe src="https://player.vimeo.com/video/1114696618?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allowfullscreen></iframe>
-                </div>
-                <div class="item-meta">
-                    <div class="item-title">VISUAL_RESEARCH_I</div>
-                    <div class="item-tags">Direction / Editing<br>Istanbul, 2025</div>
-                </div>
-            </article>
 
-            <article class="grid-item">
-                <div class="item-label">
-                    <span>[ 01_MOTION_B ]</span>
-                    <span>35MM_SIM</span>
+                <!-- VIDÉO 2 - L3 C3RCL3 - RIPPLES : V - Art -->
+                <div class="video-item">
+                    <div class="item-label">
+                        <span>[ MOTION_02 ]</span>
+                        <span>L3 C3RCL3</span>
+                    </div>
+                    <div class="video-box">
+                        <iframe src="https://player.vimeo.com/video/1177543358?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allowfullscreen></iframe>
+                    </div>
+                    <div class="item-meta">
+                        <div class="item-title">L3_C3RCL3_RIPPLES</div>
+                        <div class="item-tags">Œuvre vidéo / Art et Sacré<br>BløwYøurMind Prøductiøn // 2026</div>
+                    </div>
                 </div>
-                <div class="video-box">
-                    <iframe src="https://player.vimeo.com/video/1084050122?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allowfullscreen></iframe>
-                </div>
-                <div class="item-meta">
-                    <div class="item-title">VISUAL_RESEARCH_II</div>
-                    <div class="item-tags">Director - Original Music<br>Simulation 35mm / 2026</div>
-                </div>
-            </article>
 
-            <article class="grid-item grid-full-width">
-                <div class="item-label">
-                    <span>[ 00_VERTICAL_EDIT ]</span>
-                    <span>FASHION_CUT</span>
+                <!-- VIDÉO 3 - Seek the Silent -->
+                <div class="video-item">
+                    <div class="item-label">
+                        <span>[ MOTION_03 ]</span>
+                        <span>SEEK THE SILENT</span>
+                    </div>
+                    <div class="video-box">
+                        <iframe src="https://player.vimeo.com/video/1084050122?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allowfullscreen></iframe>
+                    </div>
+                    <div class="item-meta">
+                        <div class="item-title">SEEK_THE_SILENT</div>
+                        <div class="item-tags">Fashion video essais<br>DCKSTUDIO // 2026</div>
+                    </div>
                 </div>
-                <div class="video-box-vertical">
-                    <iframe src="https://player.vimeo.com/video/1182381695?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                </div>
-                <div class="item-meta">
-                    <div class="item-title">FASHION_REEL_01</div>
-                    <div class="item-tags">Vertical Edit / Social Cut<br>Street Casting // 2026</div>
-                </div>
-            </article>
 
-            <article class="grid-item grid-full-width">
+                <!-- VIDÉO 4 - Oniric Moment -->
+                <div class="video-item">
+                    <div class="item-label">
+                        <span>[ MOTION_04 ]</span>
+                        <span>ONIRIC MOMENT</span>
+                    </div>
+                    <div class="video-box">
+                        <iframe src="https://player.vimeo.com/video/1084048880?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allowfullscreen></iframe>
+                    </div>
+                    <div class="item-meta">
+                        <div class="item-title">ONIRIC_MOMENT</div>
+                        <div class="item-tags">Fashion style essais<br>DCKSTUDIO // 2026</div>
+                    </div>
+                </div>
+
+                <!-- VIDÉO 5 - Lost Hasankeyf -->
+                <div class="video-item">
+                    <div class="item-label">
+                        <span>[ MOTION_05 ]</span>
+                        <span>LOST HASANKEYF</span>
+                    </div>
+                    <div class="video-box">
+                        <iframe src="https://player.vimeo.com/video/1063410348?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allowfullscreen></iframe>
+                    </div>
+                    <div class="item-meta">
+                        <div class="item-title">LOST_HASANKEYF</div>
+                        <div class="item-tags">Video Essay / DCKSTUDIO<br>2026</div>
+                    </div>
+                </div>
+
+                <!-- VIDÉO 6 - Atari Teenage Riot Teaser -->
+                <div class="video-item">
+                    <div class="item-label">
+                        <span>[ MOTION_06 ]</span>
+                        <span>ATARI TEENAGE RIOT</span>
+                    </div>
+                    <div class="video-box">
+                        <iframe src="https://player.vimeo.com/video/1063409320?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allowfullscreen></iframe>
+                    </div>
+                    <div class="item-meta">
+                        <div class="item-title">ATARI_TEENAGE_RIOT</div>
+                        <div class="item-tags">Teaser / Addict Tv & DCKSTUDIO<br>2025</div>
+                    </div>
+                </div>
+
+                <!-- VIDÉO 7 - Revolting Cocks Interview -->
+                <div class="video-item">
+                    <div class="item-label">
+                        <span>[ MOTION_07 ]</span>
+                        <span>REVOLTING COCKS</span>
+                    </div>
+                    <div class="video-box">
+                        <iframe src="https://player.vimeo.com/video/1063404223?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allowfullscreen></iframe>
+                    </div>
+                    <div class="item-meta">
+                        <div class="item-title">REVOLTING_COCKS</div>
+                        <div class="item-tags">Interview / AddictTV<br>2026</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- SECTION VERTICALE - 3 VIDÉOS CÔTE À CÔTE -->
+            <div class="vertical-section">
                 <div class="item-label">
-                    <span>[ 02_STILLS ]</span>
+                    <span>[ VERTICAL_EDITS ]</span>
+                    <span>9:16 FORMAT</span>
+                </div>
+                <div class="vertical-grid">
+                    
+                    <!-- FASHION REEL 01 -->
+                    <div class="vertical-item">
+                        <div class="vertical-video-box">
+                            <iframe src="https://player.vimeo.com/video/1182381695?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="vertical-meta">
+                            <div class="vertical-title">FASHION_REEL</div>
+                            <div class="vertical-tags">Street Casting<br>2026</div>
+                        </div>
+                    </div>
+                    
+                    <!-- L3_C3RCL3_Capsule_Expo_TAO_B -->
+                    <div class="vertical-item">
+                        <div class="vertical-video-box">
+                            <iframe src="https://player.vimeo.com/video/1131127996?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="vertical-meta">
+                            <div class="vertical-title">CAPSULE_TAO_B</div>
+                            <div class="vertical-tags">L3_C3RCL3 / KØЛØ-RIPPLES<br>BløwYøurMind</div>
+                        </div>
+                    </div>
+                    
+                    <!-- L3_C3RCL3_Capsule_RIPPLES_Episode02_A_Silence -->
+                    <div class="vertical-item">
+                        <div class="vertical-video-box">
+                            <iframe src="https://player.vimeo.com/video/1131030824?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>
+                        <div class="vertical-meta">
+                            <div class="vertical-title">RIPPLES_EP02</div>
+                            <div class="vertical-tags">L3_C3RCL3 / Silence<br>BløwYøurMind</div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- SECTION STILLS -->
+            <div class="stills-section">
+                <div class="item-label">
+                    <span>[ STILLS ]</span>
                     <span>TEXTURE_STUDIES</span>
                 </div>
                 <div class="stills-grid" id="stillsGrid"></div>
                 <div class="item-meta">
                     <div class="item-title">TEXTURE_STUDIES</div>
-                    <div class="item-tags">Narrative Still Series (8 Frames)<br>Istanbul / Anatolia / 2026</div>
+                    <div class="item-tags">Narrative Still Series (8 Frames)</div>
                 </div>
-            </article>
+            </div>
 
-            <article class="grid-item grid-full-width">
+            <!-- SECTION SOUND -->
+            <div class="audio-section">
                 <div class="item-label">
-                    <span>[ 03_SOUND ]</span>
+                    <span>[ SOUND ]</span>
                     <span>SONIC_ARCHEOLOGY</span>
                 </div>
                 <div class="audio-container">
                     <audio controls>
                         <source src="assets/soundscape.mp3" type="audio/mpeg">
-                        Your browser does not support the audio element.
                     </audio>
                 </div>
                 <div class="item-meta">
                     <div class="item-title">SONIC_ARCHEOLOGY</div>
                     <div class="item-tags">Field Recording<br>Industrial Ambient</div>
                 </div>
-            </article>
+            </div>
             
         </main>
 
         <footer>
             <div>DCK STUDIO // NO_COMPROMISE</div>
-            <div>© 2026 // ISTANBUL_TR</div>
+            <div>© 2026</div>
             <div class="big-footer-title">BEYOND</div>
         </footer>
     </div>
@@ -477,7 +641,6 @@
             img.src = src;
             img.alt = 'Still';
             img.loading = 'lazy';
-            img.onerror = function() { this.style.backgroundColor = '#111'; };
             item.appendChild(img);
             stillsGrid.appendChild(item);
         });
@@ -492,7 +655,6 @@
             parent.style.fontWeight = '900';
             parent.textContent = 'DCK';
         };
-        logoImg.src = logoImg.src;
 
         window.scrollTo(0, 0);
     </script>
